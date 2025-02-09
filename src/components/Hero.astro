@@ -1,0 +1,103 @@
+---
+// src/components/Hero.astro
+interface Props {
+    nextEventDate: string;
+    nextEventTime: string;
+}
+
+const { nextEventDate = "March 15", nextEventTime = "19:00 - 21:00 JST" } =
+    Astro.props;
+---
+
+<section
+    class="relative min-h-screen pt-16 overflow-hidden bg-gradient-to-b from-white to-gray-50"
+>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 text-center">
+        <!-- Event Date Card -->
+        <div
+            class="inline-block mb-8 rounded-lg bg-white shadow-md overflow-hidden"
+        >
+            <div class="px-8 py-4">
+                <p class="text-sm font-medium text-gray-500">Next Meetup</p>
+                <p class="mt-1 text-2xl font-bold text-blue-600">
+                    {nextEventDate}
+                </p>
+                <p class="mt-1 text-sm text-gray-600">{nextEventTime}</p>
+            </div>
+        </div>
+
+        <!-- Main Title -->
+        <h1
+            class="mt-8 text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 tracking-tight animate-title"
+        >
+            Tokyo Indie Hackers
+        </h1>
+
+        <!-- Description -->
+        <p class="mt-6 text-xl text-gray-600 max-w-3xl mx-auto animate-fade-in">
+            Join Tokyo's most active community of independent developers,
+            creators, and entrepreneurs. Share ideas, get feedback, and build
+            your next big thing!
+        </p>
+
+        <!-- CTA Buttons -->
+        <div
+            class="mt-10 flex flex-col sm:flex-row justify-center gap-4 animate-fade-in"
+        >
+            <a
+                href="/register"
+                class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 transition-all hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+                Join Next Event
+            </a>
+            <a
+                href="/about"
+                class="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-base font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 transition-all hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            >
+                Learn More
+            </a>
+        </div>
+    </div>
+
+    <!-- Background Elements -->
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        <div
+            class="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-gradient-to-br from-blue-100/40 to-cyan-100/40 rounded-full blur-3xl"
+        >
+        </div>
+        <div
+            class="absolute -bottom-1/4 -left-1/4 w-1/2 h-1/2 bg-gradient-to-tr from-blue-100/40 to-purple-100/40 rounded-full blur-3xl"
+        >
+        </div>
+    </div>
+</section>
+
+<style>
+    .animate-title {
+        animation: slideUp 0.8s ease-out;
+    }
+
+    .animate-fade-in {
+        animation: fadeIn 1s ease-out;
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+</style>
