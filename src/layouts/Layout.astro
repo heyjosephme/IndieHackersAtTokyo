@@ -1,6 +1,8 @@
 ---
 import Navbar from "../components/Navbar.astro";
 import Hero from "../components/Hero.astro";
+import Luma from "../components/Luma.astro";
+import RegisterButton from "../components/RegisterButton.astro";
 interface Props {
     title: string;
 }
@@ -17,6 +19,8 @@ const { title } = Astro.props;
         <Navbar />
         <main>
             <Hero nextEventDate="March 15" nextEventTime="19:00 - 21:00 JST" />
+            <Luma />
+            <RegisterButton />
             <slot />
         </main>
     </body>
