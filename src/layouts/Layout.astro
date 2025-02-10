@@ -9,7 +9,7 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" data-theme="dark">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
@@ -18,9 +18,7 @@ const { title } = Astro.props;
     <body>
         <Navbar />
         <main>
-            <Hero nextEventDate="March 15" nextEventTime="19:00 - 21:00 JST" />
-            <Luma />
-            <RegisterButton />
+            <Hero nextEventDate="Feb 16" nextEventTime="14:00 - 16:00 JST" />
             <slot />
         </main>
     </body>
