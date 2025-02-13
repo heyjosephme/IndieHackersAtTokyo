@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Logo from "../../public/logo.svg";
+import LanguageSwitcher from "../components/LanguageSwitcher";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -79,44 +80,7 @@ const languages = [
         <DropdownMenuSeparator />
       </DropdownMenuContent> -->
     <div class="flex items-center space-x-4">
-      <!-- Language Switcher -->
-      <div class="relative group">
-        <button
-          type="button"
-          class="p-2 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          <span class="sr-only">Change language</span>
-          <svg
-            class="w-5 h-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129"
-            ></path>
-          </svg>
-        </button>
-        <div
-          class="hidden group-hover:block absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5"
-        >
-          <div class="py-1" role="menu">
-            <a
-              href="#"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              role="menuitem">English</a
-            >
-            <a
-              href="#"
-              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              role="menuitem">日本語</a
-            >
-          </div>
-        </div>
-      </div>
+      <LanguageSwitcher client:load currentPath={Astro.url.pathname} />
       <!-- Theme Switcher -->
       <Button variant="ghost" size="icon" id="theme-toggle">
         <Moon className="w-5 h-5 dark:hidden" />
