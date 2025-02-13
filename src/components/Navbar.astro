@@ -6,28 +6,30 @@ import { ButtonThemeSwitcher } from "@/components/ThemeSwitcher";
 ---
 
 <nav
-  class="w-full max-w-full px-6 py-4 border-b flex justify-between items-center"
+  class="w-full max-w-full px-6 py-4 border-b flex justify-between items-center bg-background border-border"
 >
   <div class="flex items-center gap-2">
     <Image src={Logo} alt="Logo" class="w-8 h-8" />
-    <span class="text-lg font-semibold">Tokyo Indie Hackers</span>
+    <span class="text-lg font-semibold text-foreground"
+      >Tokyo Indie Hackers</span
+    >
   </div>
   <div class="hidden lg:flex lg:items-center lg:space-x-8">
     <a
       href="#about"
-      class="text-gray-700 hover:text-gray-900 transition-colors"
+      class="text-foreground/80 hover:text-foreground transition-colors"
     >
       About
     </a>
     <a
       href="#events"
-      class="text-gray-700 hover:text-gray-900 transition-colors"
+      class="text-foreground/80 hover:text-foreground transition-colors"
     >
       Events
     </a>
     <a
       href="#community"
-      class="text-gray-700 hover:text-gray-900 transition-colors"
+      class="text-foreground/80 hover:text-foreground transition-colors"
     >
       Community
     </a>
