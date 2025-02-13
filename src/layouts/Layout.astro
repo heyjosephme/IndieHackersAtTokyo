@@ -4,18 +4,25 @@ import Hero from "../components/Hero.astro";
 const title = "Tokyo Indie Hackers";
 ---
 
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="min-h-screen bg-background text-foreground">
     <Navbar />
     <main>
       <Hero nextEventDate="Feb 16" nextEventTime="14:00 - 16:00 JST" />
       <slot />
     </main>
+
+    <script is:inline>
+      // Theme initialization
+      const theme = localStorage.getItem("theme") || "dark";
+      document.documentElement.setAttribute("data-theme", theme);
+      document.documentElement.classList.toggle("dark", theme === "dark");
+    </script>
   </body>
 </html>
