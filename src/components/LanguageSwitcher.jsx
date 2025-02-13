@@ -7,11 +7,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
 
 const languages = [
   { code: 'en', name: 'English' },
+  { code: 'ja', name: '日本語' },
   { code: 'zh', name: '中文' },
-  { code: 'jp', name: '日本語' },
 ];
 
 const LanguageSwitcher = ({ currentPath = '' }) => {
@@ -36,23 +37,27 @@ const LanguageSwitcher = ({ currentPath = '' }) => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger className="flex items-center space-x-2 p-2 rounded-md hover:bg-gray-100 focus:outline-none">
-        <Languages className="h-5 w-5" />
-        <span className="text-sm font-medium">{currentLang.toUpperCase()}</span>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="icon">
+          <Languages className="h-5 w-5" />
+          <span className="sr-only">Switch language</span>
+        </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-48">
+      <DropdownMenuContent 
+        align="end"
+        className="w-[150px] bg-background border border-border"
+      >
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
-            className={`flex items-center space-x-2 cursor-pointer ${
-              currentLang === lang.code ? 'bg-gray-100' : ''
-            }`}
+            className={`
+              text-sm cursor-pointer
+              ${currentLang === lang.code ? 'text-primary font-medium' : 'text-foreground/80'}
+              hover:text-foreground hover:bg-accent
+            `}
             onClick={() => handleLanguageChange(lang.code)}
           >
-            <span className="text-sm">{lang.name}</span>
-            <span className="text-xs text-gray-500 ml-auto">
-              {lang.code.toUpperCase()}
-            </span>
+            {lang.name}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
