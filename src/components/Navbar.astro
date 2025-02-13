@@ -12,13 +12,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Globe, Moon, Sun } from "lucide-react";
-
-// You can pass these as props if needed
-const languages = [
-  { code: "EN", label: "English" },
-  { code: "ES", label: "Español" },
-  { code: "FR", label: "Français" },
-];
+import {
+  ButtonThemeSwitcher,
+  SwitchThemeSwitcher,
+} from "@/components/ThemeSwitcher";
 ---
 
 <nav
@@ -81,12 +78,7 @@ const languages = [
       </DropdownMenuContent> -->
     <div class="flex items-center space-x-4">
       <LanguageSwitcher client:load currentPath={Astro.url.pathname} />
-      <!-- Theme Switcher -->
-      <Button variant="ghost" size="icon" id="theme-toggle">
-        <Moon className="w-5 h-5 dark:hidden" />
-        <Sun className="w-5 h-5 hidden dark:block" />
-      </Button>
-
+      <ButtonThemeSwitcher client:load />
       <a
         href="https://lu.ma/event/evt-hDQlXw4KwPAFPLQ"
         class="luma-checkout--button"
@@ -99,27 +91,6 @@ const languages = [
         is:inline
         id="luma-checkout"
         src="https://embed.lu.ma/checkout-button.js"></script>
-
-      <script>
-        // Theme toggle functionality
-        const themeToggle = document.getElementById("theme-toggle");
-
-        if (themeToggle) {
-          themeToggle.addEventListener("click", () => {
-            document.documentElement.classList.toggle("dark");
-
-            // Save theme preference
-            const isDark = document.documentElement.classList.contains("dark");
-            localStorage.setItem("theme", isDark ? "dark" : "light");
-          });
-        }
-
-        // Initialize theme from saved preference
-        const savedTheme = localStorage.getItem("theme") || "light";
-        if (savedTheme === "dark") {
-          document.documentElement.classList.add("dark");
-        }
-      </script>
     </div>
   </div>
 </nav>
