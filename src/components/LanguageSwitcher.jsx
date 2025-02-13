@@ -10,9 +10,6 @@ import {
 
 const languages = [
   { code: 'en', name: 'English' },
- /*  { code: 'es', name: 'Español' },
-  { code: 'fr', name: 'Français' },
-  { code: 'de', name: 'Deutsch' }, */
   { code: 'zh', name: '中文' },
   { code: 'jp', name: '日本語' },
 ];
@@ -24,8 +21,9 @@ const LanguageSwitcher = ({ currentPath = '' }) => {
   const handleLanguageChange = (langCode) => {
     setCurrentLang(langCode);
     // Update URL using Astro's routing
-    const newPath = `/${langCode}${currentPath.substring(3) || ''}`;
-    window.location.pathname = newPath;
+    // TODO: Implement language switching
+    //const newPath = `/${langCode}${currentPath.substring(3) || ''}`;
+    //window.location.pathname = newPath;
   };
 
   // Set initial language based on URL when component mounts

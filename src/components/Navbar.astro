@@ -2,31 +2,16 @@
 import { Image } from "astro:assets";
 import Logo from "../../public/logo.svg";
 import LanguageSwitcher from "../components/LanguageSwitcher";
-import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Globe, Moon, Sun } from "lucide-react";
-import {
-  ButtonThemeSwitcher,
-  SwitchThemeSwitcher,
-} from "@/components/ThemeSwitcher";
+import { ButtonThemeSwitcher } from "@/components/ThemeSwitcher";
 ---
 
 <nav
   class="w-full max-w-full px-6 py-4 border-b flex justify-between items-center"
 >
-  <!-- Left side -->
   <div class="flex items-center gap-2">
     <Image src={Logo} alt="Logo" class="w-8 h-8" />
     <span class="text-lg font-semibold">Tokyo Indie Hackers</span>
   </div>
-  <!-- Desktop Navigation -->
   <div class="hidden lg:flex lg:items-center lg:space-x-8">
     <a
       href="#about"
@@ -47,35 +32,7 @@ import {
       Community
     </a>
   </div>
-  <!-- Right side -->
   <div class="flex items-center gap-4">
-    <!-- Language Switcher -->
-    <!-- <DropdownMenu>
-      <DropdownMenuTrigger asChild><Button>Open</Button></DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>Profile</DropdownMenuItem>
-        <DropdownMenuItem>Billing</DropdownMenuItem>
-        <DropdownMenuItem>Team</DropdownMenuItem>
-        <DropdownMenuItem>Subscription</DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu> -->
-    <!-- <DropdownMenuTrigger>
-        <Button variant="ghost" size="icon">
-          <Globe className="w-5 h-5" />
-          Open
-        </Button>
-      </DropdownMenuTrigger> -->
-    <!--  <DropdownMenuContent>
-        {
-          languages.map((lang) => (
-            <DropdownMenuItem>{lang.label}</DropdownMenuItem>
-          ))
-        }
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-      </DropdownMenuContent> -->
     <div class="flex items-center space-x-4">
       <LanguageSwitcher client:load currentPath={Astro.url.pathname} />
       <ButtonThemeSwitcher client:load />
