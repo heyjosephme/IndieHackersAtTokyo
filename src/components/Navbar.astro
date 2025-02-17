@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import Logo from "../../public/logo.svg";
 import LanguageSwitcher from "../components/LanguageSwitcher";
 import { ButtonThemeSwitcher } from "@/components/ThemeSwitcher";
+import { MeetupButton } from "@/components/MeetupButton";
 ---
 
 <nav
@@ -38,18 +39,7 @@ import { ButtonThemeSwitcher } from "@/components/ThemeSwitcher";
     <div class="flex items-center space-x-4">
       <LanguageSwitcher client:load currentPath={Astro.url.pathname} />
       <ButtonThemeSwitcher client:load />
-      <a
-        href="https://lu.ma/event/evt-hDQlXw4KwPAFPLQ"
-        class="luma-checkout--button"
-        data-luma-action="checkout"
-        data-luma-event-id="evt-hDQlXw4KwPAFPLQ"
-      >
-        Register for Event
-      </a>
-      <script
-        is:inline
-        id="luma-checkout"
-        src="https://embed.lu.ma/checkout-button.js"></script>
+      <MeetupButton client:load />
     </div>
   </div>
 </nav>

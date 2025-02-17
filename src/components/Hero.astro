@@ -21,6 +21,7 @@ function getNextSunday() {
 }
 
 const nextEventDate = getNextSunday();
+const weekdayPlace = "Sunday @ Shibuya";
 ---
 
 <section class="relative min-h-screen bg-background overflow-hidden">
@@ -62,7 +63,7 @@ const nextEventDate = getNextSunday();
         <p class="mt-1 text-2xl font-bold text-primary">
           {nextEventDate}
         </p>
-        <p class="mt-1 text-sm text-muted-foreground">Sunday @ Tokyo</p>
+        <p class="mt-1 text-sm text-muted-foreground">{weekdayPlace}</p>
       </div>
     </div>
 
