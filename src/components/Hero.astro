@@ -1,18 +1,18 @@
 ---
 import { AnimatedTitle } from "./AnimatedTitle";
+import { startOfWeek, addDays } from "date-fns";
+import { toZonedTime } from "date-fns-tz";
 
-// Get next Sunday in JST - this now runs on the server for every request
+// Get this week's Sunday in JST
 function getNextSunday() {
-  const today = new Date();
-  // Convert to JST (UTC+9)
-  const jstDate = new Date(today.getTime() + 9 * 60 * 60 * 1000);
-  const daysUntilSunday = (7 - jstDate.getDay()) % 7;
-  const nextSunday = new Date(
-    jstDate.getTime() + daysUntilSunday * 24 * 60 * 60 * 1000
-  );
+  // Get current time in JST
+  const jstDate = toZonedTime(new Date(), "Asia/Tokyo");
 
-  // Format date: "February 18"
-  return nextSunday.toLocaleDateString("en-US", {
+  // Get the start of the week (Monday) and add 6 days to get to Sunday
+  const thisSunday = addDays(startOfWeek(jstDate, { weekStartsOn: 1 }), 6);
+
+  // Format as "February 18"
+  return thisSunday.toLocaleDateString("en-US", {
     month: "long",
     day: "numeric",
     timeZone: "Asia/Tokyo",
