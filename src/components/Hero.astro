@@ -1,7 +1,7 @@
 ---
 import { AnimatedTitle } from "./AnimatedTitle";
 
-// Get next Sunday in JST
+// Get next Sunday in JST - this now runs on the server for every request
 function getNextSunday() {
   const today = new Date();
   // Convert to JST (UTC+9)
@@ -20,7 +20,7 @@ function getNextSunday() {
 }
 
 const nextEventDate = getNextSunday();
-const weekdayPlace = "Sunday @ Tokyo Innovation Base";
+// const venue = "Tokyo Innovation Base";
 ---
 
 <section class="relative min-h-screen bg-background overflow-hidden">
@@ -59,10 +59,12 @@ const weekdayPlace = "Sunday @ Tokyo Innovation Base";
         >
         </div>
         <p class="text-sm font-medium text-muted-foreground">Next Meetup</p>
-        <p class="mt-1 text-2xl font-bold text-primary">
+        <p class="mt-1 text-2xl font-bold text-primary" id="next-event-date">
           {nextEventDate}
         </p>
-        <p class="mt-1 text-sm text-muted-foreground">{weekdayPlace}</p>
+        <p class="mt-1 text-sm text-muted-foreground" id="event-venue">
+          Sunday <!-- @ {venue} -->
+        </p>
       </div>
     </div>
 
@@ -182,4 +184,6 @@ const weekdayPlace = "Sunday @ Tokyo Innovation Base";
       element.appendChild(span);
     });
   });
+
+  // Removing client-side date calculation since we're using SSR
 </script>
